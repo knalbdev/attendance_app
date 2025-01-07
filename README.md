@@ -1,16 +1,16 @@
-# face_recognition
+# Attendance App
 
-A new Flutter project.
+An app that include Face Recognition for attendance report.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Face Recognition for attendance validation
+- Attendance Record
+- Attendance List
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Technologies
+- Flutter Framework
+- Firebase
+    - Firebase ML Kit for face recognition
+    - Firestore/Realtime Database for resources savings
+- Camera plugin
