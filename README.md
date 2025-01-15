@@ -10,6 +10,7 @@ An app that include Face Recognition for attendance report.
 
 ## Technologies
 - Flutter Framework
+- Dart Programming Language
 - Firebase
     - Firebase ML Kit for face recognition
     - Firestore/Realtime Database for resources savings
