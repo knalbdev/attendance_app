@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "401662757068",
+    "project_id": "github-config-cbd85",
+    "storage_bucket": "github-config-cbd85.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401662757068:android:297f3544c66fb992051a69",
+        "android_client_info": {
+          "package_name": "com.knalbdev.face_recognition"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK2ebozBl3jeQp2C7YWlCjHDt9Q2GRc6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
