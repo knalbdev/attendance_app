@@ -52,13 +52,37 @@ Future<void> submitAttendanceReport(BuildContext context, String address, String
               child: Text(
                 "Ups, $e",
                 style: TextStyle(color: Colors.white),
-                // TODO - UNTIL HERE XIXI
               ),
             )
           ],
         ),
+        backgroundColor: Colors.blueAccent,
+        shape: StadiumBorder(),
+        behavior: SnackBarBehavior.floating,
       ));
     }
+  }).catchError((error) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Row(
+        children: [
+          Icon(
+            Icons.error_outline,
+            color: Colors.white,
+          ),
+          SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              "Ups, $error",
+              style: TextStyle(color: Colors.white),
+            ),
+          )
+        ],
+      ),
+      backgroundColor: Colors.blueAccent,
+      shape: StadiumBorder(),
+      behavior: SnackBarBehavior.floating,
+    ));
+    Navigator.of(context).pop();
   });
 }
 
