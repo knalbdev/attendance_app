@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:face_recognition/services/attendance_service.dart';
 import 'package:flutter/material.dart';
 
 Container buildSubmitButton(BuildContext context, Size size, XFile? image, TextEditingController controllerName, String address, String status, String timeStamp) {
@@ -23,12 +24,18 @@ Container buildSubmitButton(BuildContext context, Size size, XFile? image, TextE
             borderRadius: BorderRadius.circular(20),
             onTap: () {
               if (image == null || controllerName.text.isEmpty) {
-                showSnackBar()
-                // TODO 1: UNTIL HERE XIXI
+                showSnackBar(context, "Please fill all the forms!");
               } else {
-                
+                submitAttendanceReport(context, address, controllerName.text.toString(), status, timeStamp);
               }
             },
+            child: Text(
+              "Submit Now",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold
+              ),
+            ),
           ),
         ),
       ),
