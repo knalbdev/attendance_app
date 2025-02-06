@@ -3,13 +3,28 @@ import 'package:flutter/material.dart';
 
 class ErorrHandler {
   static void handleError(BuildContext context, dynamic error) {
-    SnackBarComponent.showSnackBar(
-      context,
-      error,
-      isError: true
-    );
+    if (error is PermissionDeniedException) {
+      SnackBarComponent.showSnackBar(
+        context,
+        "Permission Denied",
+        isError: true,
+      );
+    } else {
+      SnackBarComponent.showSnackBar(
+        context,
+        error,
+        isError: true
+      );
+    }
     Navigator.of(context).pop();
   }
+}
 
-  // TODO: implement exception handling if, the permission is denied
+class PermissionDeniedException implements Exception {
+  final String message;
+  // proses pembuatan placeholder dari sebuah exception/error
+  PermissionDeniedException([this.message = '']);
+
+  @override
+  String toString() => message.isEmpty ? "Permission Denied" : message;
 }
