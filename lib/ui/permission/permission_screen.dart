@@ -1,6 +1,9 @@
-import 'package:face_recognition/services/location_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:face_recognition/ui/permission/components/app_bar.dart';
+import 'package:face_recognition/ui/permission/components/form_body.dart';
+import 'package:face_recognition/ui/permission/components/form_header.dart';
+import 'package:face_recognition/ui/permission/components/submit_button.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 
 class PermissionScreen extends StatefulWidget {
   const PermissionScreen({super.key});
@@ -12,17 +15,39 @@ class PermissionScreen extends StatefulWidget {
 class _PermissionScreenState extends State<PermissionScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-
-  void requestPermission() async {
-    final hasPermission = await handleLocationPermission(context);
-
-  // TODO: UNTIL HERE XIXI
-    // try {
-    //   if ()
-    // } catch (e) {
-      
-    // }
+    Size size = MediaQuery.of(context).size;
+    
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: buildAppBar(context),
+      body: SingleChildScrollView(
+        child: Card(
+          color: Colors.white,
+          margin: const EdgeInsets.fromLTRB(10, 10, 10, 30),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10)
+          ),
+          elevation: 5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FormHeader(
+                title: "Permission Request Form",
+                icon: Icons.assignment
+              ),
+              FormBody(),
+              SubmitButton(
+                size: size,
+                nameController: TextEditingController(),
+                formController: TextEditingController(),
+                toController: TextEditingController(),
+                dropValueCategories: "Dropdown Content",
+                dataCollection: FirebaseFirestore.instance.collection('dataCollectionValue'),
+              )
+            ],
+          )
+        ),
+      )
+    );
   }
 }
