@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:face_recognition/services/data_service.dart';
+import 'package:face_recognition/ui/history/components/attendance_card.dart';
+import 'package:face_recognition/ui/history/components/delete_dialog.dart';
 import 'package:flutter/material.dart';
 
 class _AttendanceHistoryScreenState extends StatefulWidget {
@@ -32,7 +34,27 @@ class __AttendanceHistoryScreenStateState extends State<_AttendanceHistoryScreen
           return ListView.builder(
             itemCount: data.length,
             itemBuilder: (context, index) {
-              // TODO: put attendance card UI here
+              return AttendanceHistoryCard(
+                // untuk mendefinisikan data yang akan muncul di UI berdasarkan index/posisi yang ada di db
+                data: data[index].data() as Map<String, dynamic>,
+                onDelete: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => DeleteDialog(
+                      // untuk menjadikan index sebagai id dari data yang ada di db
+                      documentId: data[index].id,
+                      dataCollection: dataService.dataCollection,
+                      // digunakan untuk meperbarui state setelah terjadi perhapusan data dari db
+                      onConfirm: () {
+                        setState(() {
+                          dataService.deteleData(data[index].id);
+                          Navigator.pop(context);
+                        });
+                      },
+                    )
+                  );
+                },
+              );
             },
           );
         },
